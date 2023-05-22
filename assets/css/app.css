@@ -1,0 +1,147 @@
+html {
+  scroll-behavior: smooth;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+}
+
+a:focus {
+  outline: none;
+}
+
+.card {
+  margin: 4rem auto;
+}
+
+.card-header {
+  padding: 2rem 0;
+}
+
+.card-body {
+  padding: 2rem;
+}
+
+.graphCard {
+  display: none;
+}
+
+#resultsTableHeading, #infoTableHeading {
+  display: none;
+  margin-top: 4rem;
+}
+
+.table {
+  display: none;
+}
+
+.card,
+.btn,
+.form-control {
+  border-radius: 0;
+}
+
+@media(prefers-color-scheme: dark) {
+  body {
+      background: #161616;
+      color: #ccc;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+      color: white;
+  }
+
+  .navbar-light .navbar-brand {
+      color: white;
+  }
+
+  .navbar-light .navbar-brand:hover {
+      color: white;
+      text-decoration: underline;
+  }
+
+  .border-bottom {
+      border-color: #5b5b5b !important;
+  }
+
+  .card {
+      border-color: #7b7b7b;
+  }
+
+  .card-header {
+      background-color: #202020;
+      border-color: #7b7b7b;
+  }
+
+  .card-body {
+      background-color: #202020;
+  }
+
+  .card-body label {
+      color: white;
+  }
+
+  .card-body .form-control {
+      background: #3b3b3b;
+      border-color: #5b5b5b;
+      color: white;
+  }
+
+  .card-body .form-control:focus {
+      color: white;
+      background-color: #5b5b5b;
+      border-color: #00ff00;
+      outline: 0;
+      box-shadow: 0 0 0 0.2rem rgba(0, 255, 0, 0.25);
+  }
+
+  .btn-outline-primary {
+      color: #00ff00;
+      border-color: #00ff00
+  }
+  .btn-outline-primary:hover {
+      color: #fff;
+      background-color: #00ff00;
+      border-color: #00ff00
+  }
+  .btn-outline-primary.focus,
+  .btn-outline-primary:focus {
+      box-shadow: 0 0 0 0.2rem rgba(0, 255, 0, 0.5)
+  }
+  .btn-outline-primary.disabled,
+  .btn-outline-primary:disabled {
+      color: #00ff00;
+      background-color: transparent
+  }
+  .btn-outline-primary:not(:disabled):not(.disabled).active,
+  .btn-outline-primary:not(:disabled):not(.disabled):active,
+  .show > .btn-outline-primary.dropdown-toggle {
+      color: #fff;
+      background-color: #00ff00;
+      border-color: #00ff00
+  }
+  .btn-outline-primary:not(:disabled):not(.disabled).active:focus,
+  .btn-outline-primary:not(:disabled):not(.disabled):active:focus,
+  .show > .btn-outline-primary.dropdown-toggle:focus {
+      box-shadow: 0 0 0 0.2rem rgba(0, 255, 0, 0.5)
+  }
+
+  td,
+  th {
+      border-color: #7b7b7b !important;
+  }
+
+  th {
+      background-color: #202020;
+      color: white;
+  }
+
+  td {
+      color: #ddd;
+  }
+}
