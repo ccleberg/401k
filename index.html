@@ -3,130 +3,116 @@
 
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="The 401k web app helps you calculate your projected 401k savings based on a few simple inputs. Just fill in the information and click the button!" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Calculate your projected 401k savings based on a few simple inputs.">
   <!-- icons -->
-  <link rel="apple-touch-icon" sizes="57x57" href="./assets/favicon/apple-icon-57x57.png">
-  <link rel="apple-touch-icon" sizes="60x60" href="./assets/favicon/apple-icon-60x60.png">
-  <link rel="apple-touch-icon" sizes="72x72" href="./assets/favicon/apple-icon-72x72.png">
-  <link rel="apple-touch-icon" sizes="76x76" href="./assets/favicon/apple-icon-76x76.png">
-  <link rel="apple-touch-icon" sizes="114x114" href="./assets/favicon/apple-icon-114x114.png">
-  <link rel="apple-touch-icon" sizes="120x120" href="./assets/favicon/apple-icon-120x120.png">
-  <link rel="apple-touch-icon" sizes="144x144" href="./assets/favicon/apple-icon-144x144.png">
-  <link rel="apple-touch-icon" sizes="152x152" href="./assets/favicon/apple-icon-152x152.png">
   <link rel="apple-touch-icon" sizes="180x180" href="./assets/favicon/apple-icon-180x180.png">
-  <link rel="icon" type="image/png" sizes="192x192" href="./assets/favicon/android-icon-192x192.png">
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="96x96" href="./assets/favicon/favicon-96x96.png">
   <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon/favicon-16x16.png">
   <link rel="manifest" href="./assets/favicon/manifest.json">
-  <meta name="msapplication-TileColor" content="#ffffff">
-  <meta name="msapplication-TileImage" content="./assets/favicon/ms-icon-144x144.png">
-  <meta name="theme-color" content="#ffffff">
-  <link rel="stylesheet" href="./assets/css/bootstrap.min.css" />
-  <link rel="stylesheet" href="./assets/css/app.css" />
+  <meta name="theme-color" content="#4f6ef7">
+  <!-- styles -->
+  <link rel="stylesheet" href="./assets/css/app.css">
   <title>401k Projections</title>
 </head>
 
 <body>
-  <div class="container">
-    <!-- main panel -->
-    <div class="mainCard card">
-      <div class="card-header text-center">
-        <h1 class="display-4">401k Projection App</h1>
-        <p class="lead">This tool will help you calculate future returns on your 401k plan.</p>
-      </div>
-      <div class="card-body">
-        <div class="container">
-          <form>
-            <div class="form-row">
-              <div class="col-md-6">
-                <label for="begBalance">Beginning Balance:</label>
-                <input id="begBalance" type="text" aria-label="Beginning Balance" class="form-control" placeholder="ex: 5600.00" />
-              </div>
-              <div class="col-md-6">
-                <label for="monthlyContr">Monthly Contribution:</label>
-                <input id="monthlyContr" type="text" aria-label="Monthly Contribution" class="form-control" placeholder="ex: 300.00" />
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="col-md-6">
-                <label for="returnRate">Annual Rate of Return:</label>
-                <input id="returnRate" type="text" aria-label="Annual Rate of Return" class="form-control" placeholder="ex: 9.0">
-              </div>
-              <div class="col-md-6">
-                <label for="inflationRate">Annual Rate of Inflation:</label>
-                <input id="inflationRate" type="text" aria-label="Annual Rate of Inflation" class="form-control" placeholder="ex: 1.2">
-              </div>
-            </div>
-          </form>
-          <hr style="margin:2rem auto;">
-          <div class="form-row">
-            <div class="col-md-5">
-              <label for="years">I want to retire in this many years: </label>
-              <input id="years" class="form-control" placeholder="ex: 10" aria-labelledby="yearsLabel" data-com.bitwarden.browser.user-edited="yes">
-              <a href="#graphCard" class="btn btn-outline-primary mt-2 w-100" onclick="retirementYears()">Submit</a>
-            </div>
-            <div class="col-md-2 d-flex justify-content-center align-items-center py-3">
-              <p class="h3 text-center">&larr; OR &rarr;</p>
-            </div>
-            <div class="col-md-5">
-              <label for="money">I want to retire with this much money:</label>
-              <input id="money" class="form-control" placeholder="ex: 50000" aria-labelledby="moneyLabel">
-              <a href="#graphCard" class="btn btn-outline-primary mt-2 w-100" onclick="retirementMoney()">Submit</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- graph panel -->
-    <div id="graphCard" class="graphCard card">
-      <div class="card-header">
-        <h2 class="text-center">Projections Graph</h2>
-      </div>
-      <div class="card-body">
-        <div class="row">
-          <div class="col-lg-6">
-            <div class="chartContainer" id="balChartContainer"></div>
-          </div>
-          <div class="col-lg-6">
-            <div class="chartContainer" id="intChartContainer"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- results table -->
-    <h2 id="infoTableHeading" class="text-center">Base Information</h2>
-    <table id="infoTable" class="infoTable table table-bordered">
-      <thead>
-        <tr>
-          <th>Beginning Balance</th>
-          <th>Monthly Contribution</th>
-          <th>Annual Rate of Return</th>
-          <th>Annual Rate of Inflation</th>
-        </tr>
-      </thead>
-      <tbody></tbody>
-    </table>
+  <div class="app-container">
 
-    <h2 id="resultsTableHeading" class="text-center">Future Calculations</h2>
-    <table class="resultsTable table table-striped table-bordered">
-      <thead class="thead">
-        <tr>
-          <th>Month</th>
-          <th>Interest Earned</th>
-          <th>Contribution</th>
-          <th>New Balance</th>
-        </tr>
-      </thead>
-      <tbody></tbody>
-    </table>
+    <header class="app-header">
+      <h1>401k Projection App</h1>
+      <p>Calculate your future 401k balance based on a few simple inputs.</p>
+    </header>
+
+    <!-- inputs panel -->
+    <section class="panel" aria-label="Plan inputs">
+      <p class="section-label">Your plan</p>
+      <div class="form-grid">
+        <div class="field">
+          <label for="begBalance">Beginning Balance</label>
+          <input id="begBalance" type="number" min="0" step="0.01" placeholder="5600.00">
+        </div>
+        <div class="field">
+          <label for="monthlyContr">Monthly Contribution</label>
+          <input id="monthlyContr" type="number" min="0" step="0.01" placeholder="300.00">
+        </div>
+        <div class="field">
+          <label for="returnRate">Annual Rate of Return (%)</label>
+          <input id="returnRate" type="number" min="0" step="0.01" placeholder="9.0">
+        </div>
+        <div class="field">
+          <label for="inflationRate">Annual Rate of Inflation (%)</label>
+          <input id="inflationRate" type="number" min="0" step="0.01" placeholder="1.2">
+        </div>
+      </div>
+
+      <div class="divider">Calculate by</div>
+
+      <div class="submit-grid">
+        <div class="submit-group">
+          <label for="years">Years until retirement</label>
+          <input id="years" type="number" min="1" step="1" placeholder="10">
+          <button type="button" class="btn-primary" onclick="retirementYears()">Calculate</button>
+        </div>
+        <div class="submit-group">
+          <label for="money">Target retirement amount ($)</label>
+          <input id="money" type="number" min="1" step="1" placeholder="500000">
+          <button type="button" class="btn-primary" onclick="retirementMoney()">Calculate</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- graph panel -->
+    <section id="graphCard" class="panel" aria-label="Projections graph">
+      <p class="section-label">Projections</p>
+      <div class="chart-grid">
+        <div class="chartContainer" id="balChartContainer"></div>
+        <div class="chartContainer" id="intChartContainer"></div>
+      </div>
+    </section>
+
+    <!-- summary table -->
+    <div id="infoTableSection" class="panel table-section">
+      <h2>Base Information</h2>
+      <div style="overflow-x:auto">
+        <table class="data-table" id="infoTable">
+          <thead>
+            <tr>
+              <th scope="col">Beginning Balance</th>
+              <th scope="col">Monthly Contribution</th>
+              <th scope="col">Annual Return</th>
+              <th scope="col">Annual Inflation</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- results table -->
+    <div id="resultsTableSection" class="panel table-section">
+      <h2>Month-by-Month Breakdown</h2>
+      <div style="overflow-x:auto">
+        <table class="data-table resultsTable">
+          <thead>
+            <tr>
+              <th scope="col">Month</th>
+              <th scope="col">Interest Earned</th>
+              <th scope="col">Contribution</th>
+              <th scope="col">New Balance</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+
   </div>
 
-  <!-- JavaScript -->
-  <script src="./assets/js/jquery-3.5.1.min.js"></script>
-  <script src="./assets/js/bootstrap.bundle.min.js"></script>
-  <script src="./assets/js/plotly-1.58.0.min.js"></script>
+  <!-- Plotly basic dist (~390 KB gz) via jsDelivr -->
+  <script src="https://cdn.jsdelivr.net/npm/plotly.js-basic-dist-min@2.35.2/plotly-basic.min.js"
+          integrity="sha256-E4wugQFLl53ACGepPaVbdgWhdJXueN16+0M7fwId/Po="
+          crossorigin="anonymous"></script>
   <script src="./assets/js/app.js"></script>
 </body>
 
