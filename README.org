@@ -1,0 +1,5 @@
+#+title: 401k
+
+* what
+web app that calculates 401k returns from your inputs.
+javascript and plotly. runs in the browser.
